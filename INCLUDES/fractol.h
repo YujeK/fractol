@@ -7,8 +7,15 @@
 # include "../mlx/mlx.h"
 # include <fcntl.h>
 
-# define YDIM 800
-# define XDIM 800
+# define YDIM       1600
+# define XDIM       1400
+
+
+# define XMINBROT   -2.1
+# define XMAXBROT   0.6
+# define YMINBROT   -1.2
+# define YMAXBROT   1.2
+# define MAXITER    7
 
 # define PINK       0xFD2BE6
 # define BLUE       0x0012FD
@@ -25,6 +32,7 @@
 
 typedef struct      s_env
 {
+    int             maxiter;
     int             x;
     int             y;
     int             s_l;
@@ -36,6 +44,7 @@ typedef struct      s_env
     void            *win;
 }                   t_env;
 
+void                mandelbro(t_env *env);
 void                pixelwalk(t_env *env);
 void                fill_pxl(t_env *env);
 void                setup(t_env *env);

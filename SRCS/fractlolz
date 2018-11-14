@@ -1,0 +1,198 @@
+	mandelbouze
+	zoom_x = 270 / (XMAXBROT - XMINBROT);
+	zoom_y = 240 / (YMAXBROT - YMINBROT);
+	env->y = 0;
+		while (env->y < YDIM)
+		{
+			env->x = 0;
+
+			while (env->x < XDIM)
+			{
+			c_r = env->x / zoom_x + XMINBROT;
+			c_i = env->y / zoom_y + YMINBROT;
+			z_i = 0;
+			z_r = 0;
+			tmp = z_r;
+			i = 0;
+				while (z_r * z_r + z_i * z_i < 4 && i < MAXITER)
+				{
+					z_r = z_r * z_r - z_i * z_i + c_r;
+					z_i = 2 * z_i * tmp + c_i;
+					i++;
+				}
+				if (i == MAXITER)
+				env->img_str[XDIM * env->y + env->x] = PINK;
+				else
+				env->img_str[XDIM * env->y + env->x] = BLUE;
+			env->x++;
+			}
+		env->y++;
+		}
+}
+
+mandelcruz
+void	mandelbro(t_env *env)
+{
+	double		c_r;
+	double		c_i;
+	double		z_r;
+	double		z_i;
+	double		i;
+	double		tmp;
+	double		zoom_x;
+	double		zoom_y;
+
+	zoom_x = 300 / (XMAXBROT - XMINBROT);
+	zoom_y = 300 / (YMAXBROT - YMINBROT);
+	env->y = 0;
+		while (env->y < YDIM)
+		{
+			env->x = 0;
+			while (env->x < XDIM)
+			{
+			c_r = env->x / zoom_x + XMINBROT;
+			c_i = env->y / zoom_y + YMINBROT;
+			z_i = 0;
+			z_r = 0;
+			i = 0;
+				while (z_r * z_r + z_i * z_i < 211 && i < env->maxiter)
+				{
+					tmp = z_r;
+					z_r = z_r * z_r - z_i * z_i + c_r;
+					z_i = 5 * z_i * tmp + c_i;
+					i++;
+				}
+				if (i == MAXITER)
+				env->img_str[XDIM * env->y + env->x] = BLACK;
+				else
+				env->img_str[XDIM * env->y + env->x] = WHITE;
+			env->x++;
+			}
+		env->y++;
+		}
+}
+batmandel
+void	mandelbro(t_env *env)
+{
+	double		c_r;
+	double		c_i;
+	double		z_r;
+	double		z_i;
+	double		i;
+	double		tmp;
+	double		zoom_x;
+	double		zoom_y;
+
+	zoom_x = 800 / (XMAXBROT - XMINBROT);
+	zoom_y = 800 / (YMAXBROT - YMINBROT);
+	env->y = 0;
+		while (env->y < YDIM)
+		{
+			env->x = 0;
+			while (env->x < XDIM)
+			{
+			c_r = env->x / zoom_x + XMINBROT;
+			c_i = env->y / zoom_y + YMINBROT;
+			z_i = 0;
+			z_r = 0;
+			i = 0;
+				while (z_r * z_r + z_i * z_i < 700000 && i < env->maxiter)
+				{
+					tmp = z_r * 19;
+					z_r = z_r * z_r + z_i * z_i + c_r;
+					z_i = 2 * z_i * tmp + c_i;
+					i++;
+				}
+				if (i == MAXITER)
+				env->img_str[XDIM * env->y + env->x] = BLACK;
+				else
+				env->img_str[XDIM * env->y + env->x] = i * 8989898989/ env->maxiter;
+			env->x++;
+			}
+		env->y++;
+		}
+}
+
+mandelbuffleskull
+{
+	double		c_r;
+	double		c_i;
+	double		z_r;
+	double		z_i;
+	double		i;
+	double		tmp;
+	double		zoom_x;
+	double		zoom_y;
+
+	zoom_x = 800 / (XMAXBROT - XMINBROT);
+	zoom_y = 800 / (YMAXBROT - YMINBROT);
+	env->y = 0;
+		while (env->y < YDIM)
+		{
+			env->x = 0;
+			while (env->x < XDIM)
+			{
+			c_r = env->x / zoom_x + XMINBROT;
+			c_i = env->y / zoom_y + YMINBROT;
+			z_i = 0;
+			z_r = 0;
+			i = 0;
+				while (z_r * z_r + z_i * z_i < 9999999 && i < env->maxiter)
+				{
+					tmp = z_r * 3;
+					z_r = z_r * z_r + z_i * z_i + c_r;
+					z_i = 2 * z_i * tmp + c_i;
+					i++;
+				}
+				if (i == MAXITER)
+				env->img_str[XDIM * env->y + env->x] = BLACK;
+				else
+				env->img_str[XDIM * env->y + env->x] = i * 8989898989/ env->maxiter;
+			env->x++;
+			}
+		env->y++;
+		}
+}
+square 
+
+void	mandelbro(t_env *env)
+{
+	double		c_r;
+	double		c_i;
+	double		z_r;
+	double		z_i;
+	double		i;
+	double		tmp;
+	double		zoom_x;
+	double		zoom_y;
+
+	zoom_x = 800 / (XMAXBROT - XMINBROT);
+	zoom_y = 800 / (YMAXBROT - YMINBROT);
+	env->y = 0;
+		while (env->y < YDIM)
+		{
+			env->x = 0;
+			while (env->x < XDIM)
+			{
+			c_r = env->x / zoom_x + XMINBROT;
+			c_i = env->y / zoom_y + YMINBROT;
+			z_i = 0;
+			z_r = 0;
+			i = 0;
+				while (z_r * z_r + z_i * z_i < 9999999 && i < env->maxiter)
+				{
+					tmp = z_r * 1;
+					z_r = z_r * z_r + z_i * z_i + c_r;
+					z_i = 2 * z_i * tmp + c_i;
+					i++;
+				}
+				if (i == MAXITER)
+				env->img_str[XDIM * env->y + env->x] = BLACK;
+				else
+				env->img_str[XDIM * env->y + env->x] = i * 8989898989/ env->maxiter;
+			env->x++;
+			}
+		env->y++;
+		}
+}
+ 5400 ULTRA SWEET PALET

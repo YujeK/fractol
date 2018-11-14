@@ -12,7 +12,7 @@
 
 NAME= libft.a
 GCC= GCC
-HEADER= libft.h
+HEADER= includes/libft.h
 FLAGS= -Wall -Werror -Wextra
 AR:= ar rc
 RL= ranlib
@@ -88,7 +88,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(OBJ): %.o: %.c $(HEADER)
-	@gcc $(FLAGS) -o $@ -c $< -I libft.h
+	@gcc $(FLAGS) -o $@ -c $< -I includes/
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)

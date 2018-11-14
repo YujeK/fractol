@@ -10,14 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 char	*ft_strnew(size_t size)
 {
 	char	*str;
-	size_t	i;
 
-	i = 0;
 	if (!(str = (char*)malloc(sizeof(*str) * (size + 1))))
 		return (NULL);
 	ft_memset(str, '\0', size + 1);

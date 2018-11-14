@@ -17,7 +17,7 @@ HEADER= INCLUDES/fractol.h
 FLAGS = -Wall -Werror -Wextra
 LIB_PATH= INCLUDES/libft/
 COMP= mlx
-MLXLIB= -L mlx -lmlx -framework Opengl -framework Appkit
+MLXLIB= -L usr/bin/lib64/X11/lib -lXext -lX11 -L../minilibx -lmlx
 SRC=SRCS/main.c 			\
 	SRCS/winsetup.c			\
 	SRCS/keyinputs.c		\
@@ -32,7 +32,7 @@ $(OBJ): %.o: %.c $(HEADER)
 	@gcc $(FLAGS) -o $@ -c $< -I $(LIB_PATH) -I ../INCLUDES
 
 $(NAME): $(OBJ)
-	@gcc -o $(NAME) $(OBJ) -lm -L $(LIB_PATH) -lft $(MLXLIB) -I $(COMP)
+	@gcc -o $(NAME) $(OBJ) -lm -L $(LIB_PATH) INCLUDES/libft/libft.a $(MLXLIB) -I $(COMP)
 	@echo "\033[1;34;2m FRIED CHICKEN READY TO BE EATEN ~ (__)=3 ~\033[0m"
 	@echo "\033[0;31;3m                        (ALL RULE DONE)                               ~ (__)=3 ~\033[0m"
 

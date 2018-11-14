@@ -7,15 +7,15 @@
 # include "../mlx/mlx.h"
 # include <fcntl.h>
 
-# define YDIM       1600
-# define XDIM       1400
+# define YDIM       1000
+# define XDIM       1000
 
 
 # define XMINBROT   -2.1
 # define XMAXBROT   0.6
 # define YMINBROT   -1.2
 # define YMAXBROT   1.2
-# define MAXITER    7
+# define MAXITER    50
 
 # define PINK       0xFD2BE6
 # define BLUE       0x0012FD

@@ -22,8 +22,8 @@ void	mandelbro(t_env *env)
 	double		tmp;
 	double		zoom_x;
 	double		zoom_y;
-	zoom_x = 800 / (XMAXBROT - XMINBROT);
-	zoom_y = 800 / (YMAXBROT - YMINBROT);
+	zoom_x = XDIM / 2 / (XMAXBROT - XMINBROT);
+	zoom_y = YDIM / 2 / (YMAXBROT - YMINBROT);
 	env->y = 0;
 		while (env->y < YDIM)
 		{
@@ -35,11 +35,11 @@ void	mandelbro(t_env *env)
 			z_i = 0;
 			z_r = 0;
 			i = 0;
-				while (z_r * z_r + z_i * z_i < 4 && i < env->maxiter)
+				while (z_r * z_r + z_i * z_i < 9999999 && i < env->maxiter)
 				{
 					tmp = z_r;
-					z_r = z_r * z_r - z_i * z_i + c_r;
-					z_i = 2 * z_i * tmp + c_i;
+					z_r = z_r * z_r + z_i * z_i + c_r - 0.65;
+					z_i = 2 * z_i * tmp + c_i - 1.;
 					i++;
 				}
 				if (i == MAXITER)

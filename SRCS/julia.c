@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbro.c                                        :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 21:43:39 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/15 10:02:11 by asamir-k         ###   ########.fr       */
+/*   Created: 2018/11/14 21:05:22 by asamir-k          #+#    #+#             */
+/*   Updated: 2018/11/15 11:55:22 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-void	mandelbro(t_env *env)
+void	julia(t_env *env)
 {
 	double		c_r;
 	double		c_i;
@@ -20,27 +20,30 @@ void	mandelbro(t_env *env)
 	double		z_i;
 	double		i;
 	double		tmp;
-	double		zoom_x;
-	double		zoom_y;
-	zoom_x = 800 / (XMAXBROT - XMINBROT);
-	zoom_y = 800 / (YMAXBROT - YMINBROT);
+	double		z_rs;
+	double		z_is;
+
 	env->y = 0;
 		while (env->y < YDIM)
 		{
 			env->x = 0;
 			while (env->x < XDIM)
 			{
-			c_r = env->x / zoom_x + XMINBROT;
-			c_i = env->y / zoom_y + YMINBROT;
-			z_i = 0;
-			z_r = 0;
+			z_r = env->xminjulia + env->x * env->step;
+			z_i = env->yminjulia + env->y * env->step;
+			z_rs = z_r * z_r;
+			z_is = z_i * z_i;
+			c_i = 0.01;
+			c_r = 0.285;
 			i = 0;
-				while (z_r * z_r + z_i * z_i < 4 && i < env->maxiter)
+				while (z_rs + z_is < 4  && i < env->maxiter)
 				{
 					tmp = z_r;
-					z_r = z_r * z_r - z_i * z_i + c_r;
+					z_r = z_rs - z_is + c_r;
 					z_i = 2 * z_i * tmp + c_i;
 					i++;
+					z_rs = z_r * z_r;
+					z_is = z_i * z_i;
 				}
 				if (env->ilikeit == 1)
 				{

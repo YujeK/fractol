@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbro.c                                        :+:      :+:    :+:   */
+/*   batmandel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/13 21:43:39 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/15 10:02:11 by asamir-k         ###   ########.fr       */
+/*   Created: 2018/11/15 09:18:13 by asamir-k          #+#    #+#             */
+/*   Updated: 2018/11/15 10:01:42 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-void	mandelbro(t_env *env)
+void	batmandel(t_env *env)
 {
 	double		c_r;
 	double		c_i;
@@ -22,6 +22,7 @@ void	mandelbro(t_env *env)
 	double		tmp;
 	double		zoom_x;
 	double		zoom_y;
+
 	zoom_x = 800 / (XMAXBROT - XMINBROT);
 	zoom_y = 800 / (YMAXBROT - YMINBROT);
 	env->y = 0;
@@ -35,10 +36,10 @@ void	mandelbro(t_env *env)
 			z_i = 0;
 			z_r = 0;
 			i = 0;
-				while (z_r * z_r + z_i * z_i < 4 && i < env->maxiter)
+				while (z_r * z_r + z_i * z_i < 700000 && i < env->maxiter)
 				{
-					tmp = z_r;
-					z_r = z_r * z_r - z_i * z_i + c_r;
+					tmp = z_r * 19;
+					z_r = z_r * z_r + z_i * z_i + c_r;
 					z_i = 2 * z_i * tmp + c_i;
 					i++;
 				}

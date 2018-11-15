@@ -7,15 +7,21 @@
 # include "../mlx/mlx.h"
 # include <fcntl.h>
 
-# define YDIM       1600
-# define XDIM       1400
+# define YDIM       1200
+# define XDIM       1200
 
 
-# define XMINBROT   -2.1
-# define XMAXBROT   0.6
-# define YMINBROT   -1.2
-# define YMAXBROT   1.2
+# define XMINBROT   -2.7
+# define XMAXBROT   -0.2
+# define YMINBROT   -1.7
+# define YMAXBROT   0.7
 # define MAXITER    7
+
+# define XMINJULIA -2
+# define XMAXJULIA  2
+# define YMINJULIA 0
+# define YMAXJULIA 0
+
 
 # define PINK       0xFD2BE6
 # define BLUE       0x0012FD
@@ -32,6 +38,16 @@
 
 typedef struct      s_env
 {
+    int             tuto;
+    int             insanecolor;
+    int             ilikeit;
+    double          xminjulia;
+    double          xmaxjulia;
+    double          yminjulia;
+    double          ymaxjulia;
+    double          step;
+    int             coloriter;
+    int             fracton;
     int             maxiter;
     int             x;
     int             y;
@@ -44,6 +60,15 @@ typedef struct      s_env
     void            *win;
 }                   t_env;
 
+void                wavy(t_env *env);
+void                dragon(t_env *env);
+void                cursor(t_env * env);
+void                julia(t_env *env);
+void                flower(t_env *env);
+void                ramhead(t_env *env);
+void                disone(t_env *env);
+void                mandelcruz(t_env *env);
+void                batmandel(t_env *env);
 void                mandelbro(t_env *env);
 void                pixelwalk(t_env *env);
 void                fill_pxl(t_env *env);

@@ -6,7 +6,7 @@
 #    By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 18:38:17 by asamir-k          #+#    #+#              #
-#    Updated: 2018/11/13 23:08:53 by asamir-k         ###   ########.fr        #
+#    Updated: 2018/11/15 11:21:16 by asamir-k         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,16 @@ SRC=SRCS/main.c 			\
 	SRCS/keyinputs.c		\
 	SRCS/pxldraw.c 			\
 	SRCS/mandelbro.c		\
-	SRCS/analpixel.c
+	SRCS/analpixel.c		\
+	SRCS/cursor.c			\
+	SRCS/julia.c			\
+	SRCS/mandelcruz.c		\
+	SRCS/batmandel.c		\
+	SRCS/flower.c			\
+	SRCS/ramhead.c			\
+	SRCS/dragon.c			\
+	SRCS/wavy.c				\
+	SRCS/disone.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

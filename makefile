@@ -6,7 +6,7 @@
 #    By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 18:38:17 by asamir-k          #+#    #+#              #
-#    Updated: 2018/11/15 11:21:16 by asamir-k         ###   ########.fr        #
+#    Updated: 2018/11/16 11:25:10 by asamir-k         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ MLXLIB= -L mlx -lmlx -framework Opengl -framework Appkit
 SRC=SRCS/main.c 			\
 	SRCS/winsetup.c			\
 	SRCS/keyinputs.c		\
-	SRCS/pxldraw.c 			\
 	SRCS/mandelbro.c		\
 	SRCS/analpixel.c		\
 	SRCS/cursor.c			\
@@ -32,7 +31,11 @@ SRC=SRCS/main.c 			\
 	SRCS/ramhead.c			\
 	SRCS/dragon.c			\
 	SRCS/wavy.c				\
-	SRCS/disone.c
+	SRCS/disone.c			\
+	SRCS/mlxprint.c			\
+	SRCS/selectfractal.c	\
+	SRCS/mouseinputs.c 		\
+	SRCS/fractalbucket.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

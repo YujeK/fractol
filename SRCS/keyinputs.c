@@ -6,13 +6,33 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:03:38 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/15 12:05:32 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/16 10:59:55 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-int     key_manager(int key, t_env *env)
+void    zoom(int key, t_env *env)
+{
+    if (key == 75)
+    {
+        env->xmaxjulia += 100 * env->step;
+        env->xminjulia -= 100 * env->step;
+        env->ymaxjulia += 100 * env->step;
+        env->yminjulia -= 100 * env->step;
+        env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
+    }
+    if (key == 67)
+    {
+        env->xmaxjulia -= 100 * env->step;
+        env->xminjulia += 100 * env->step;
+        env->ymaxjulia -= 100 * env->step;
+        env->yminjulia += 100 * env->step;
+        env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
+    }
+}
+
+void    toolbox(int key, t_env *env)
 {
     if (key == 53)
         exit(0);
@@ -22,18 +42,24 @@ int     key_manager(int key, t_env *env)
         env->maxiter++;
     if (key == 49)
         {
-            env->maxiter = 9;
+            env->maxiter = 0;
             env->xminjulia = XMINJULIA;
             env->xmaxjulia = XMAXJULIA;
             env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
             env->yminjulia = -0.5 * YDIM * env->step;
             env->ymaxjulia = 0.5 * YDIM * env->step;
-            env->fracton = 0;
         }
-    if (key == 14)
-        env->fracton++;
-    if (key == 12)
-        env->fracton--;
+    if(key == 43)
+        env->display = 1;
+    if (key == 47)
+        env->display = 0;
+    if (key == 35)
+        env->ilikeit = 1;
+    if (key == 31)
+        env->ilikeit = 0;
+}
+void    translation(int key, t_env *env)
+{
     if (key == 126)
     {
         env->ymaxjulia -= 25 * env->step;
@@ -54,53 +80,69 @@ int     key_manager(int key, t_env *env)
         env->xmaxjulia -= 25 * env->step;
         env->xminjulia -= 25 * env->step;
     }
-    if (key == 75)
-    {
-        env->xmaxjulia += 100 * env->step;
-        env->xminjulia -= 100 * env->step;
-        env->ymaxjulia += 100 * env->step;
-        env->yminjulia -= 100 * env->step;
-        env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
-    }
-    if (key == 67)
-    {
-        env->xmaxjulia -= 100 * env->step;
-        env->xminjulia += 100 * env->step;
-        env->ymaxjulia -= 100 * env->step;
-        env->yminjulia += 100 * env->step;
-        env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
-    }
-/*    if (key == 8)
-        env->tuto = 1;
-    else
-        env->tuto = 0;
-*/
-    if (key == 35)
-        env->ilikeit = 1;
-    if (key == 31)
-        env->ilikeit = 0;
+}
+
+void        fractalselection(int key, t_env *env)
+{
     if (env->fracton == 0)
+        {
+            fractalselect(env);
+        }
+    if (key == 83 || env->fracton == 1)
+    {
         julia(env);
-    if (env->fracton == 2)
+        env->fracton = 1;
+    }
+    if (key == 84 || env->fracton == 2)
+    {
         ramhead(env);
-    if (env->fracton == 3)
+        env->fracton = 2;
+    }
+    if (key == 85 || env->fracton == 3)
+    {
         disone(env);
-    if (env->fracton == 4)
+        env->fracton = 3;
+    }
+    if (key == 86 || env->fracton == 4)
+    {
         flower(env);
-    if (env->fracton == 5)
+        env->fracton = 4;
+    }
+    if (key == 87 || env->fracton == 5)
+    {
         batmandel(env);
-    if (env->fracton == 6)
-        mandelcruz(env);
-    if (env->fracton == 1)
+        env->fracton = 5;
+    }
+    if (key == 88 || env->fracton == 6)
+    {
+        mandeland(env);
+        env->fracton = 6;
+    }
+    if (key == 89 || env->fracton == 7)
+    {
         mandelbro(env);
-    if (env->fracton == 7)
+        env->fracton = 7;
+    }
+    if (key == 91 || env->fracton == 8)
+    {
         dragon(env);
-    if (env->fracton == 8)
-        wavy(env);
-    if (env->fracton > 8 || env->fracton < 0)
-        env->fracton = 0;
-    mlx_clear_window(env->mlx, env->win);
-    cursor(env);
-	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
+        env->fracton = 8;
+    }
+    if (key == 92 || env->fracton == 9)
+    {
+        chickenbrot(env);
+        env->fracton = 9;
+    }
+}
+
+int    key_manager(int key, t_env *env)
+{
+    if (key == 45)
+        env->wing = 1;
+    translation(key, env);
+    toolbox(key, env);
+    zoom(key, env);
+    fractalselection(key, env);
+    commandcenter(env);
     return (0);
 }

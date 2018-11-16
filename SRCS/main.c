@@ -1,23 +1,17 @@
 #include "../INCLUDES/fractol.h"
 
-int     main(void)
+int     main(int ac, char **av)
 {
+// if (argc != 1 );
+    //ft_error////
+    (void) ac;
     t_env *env;
-
     if(!(env = ft_memalloc(sizeof(t_env))))
         return (1);
-        env->coloriter = 1;
-    env->maxiter = 9;
-    env->xminjulia = XMINJULIA;
-    env->xmaxjulia = XMAXJULIA;
-    env->fracton = 0;
-    env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
-    env->yminjulia = -0.5 * YDIM * env->step;
-    env->ymaxjulia = 0.5 * YDIM * env->step;
+    env->name = av[1];
     setup(env);
-    cursor(env);
-	mlx_hook(env->win, 2, 0, key_manager, env);
-   // mlx_hook(env->win, 6, 0, mouse_manager, env);
     pixelwalk(env);
+    fractalbucket(env);
+    commandcenter(env);
     mlx_loop(env->mlx);
 }

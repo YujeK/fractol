@@ -6,13 +6,13 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 11:17:38 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/15 11:25:41 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/16 03:21:25 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-void	wavy(t_env *env)
+void	chickenbrot(t_env *env)
 {
 	double		c_r;
 	double		c_i;

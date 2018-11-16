@@ -38,41 +38,52 @@
 
 typedef struct      s_env
 {
-    int             tuto;
-    int             insanecolor;
-    int             ilikeit;
-    double          xminjulia;
-    double          xmaxjulia;
-    double          yminjulia;
-    double          ymaxjulia;
-    double          step;
-    int             coloriter;
-    int             fracton;
-    int             maxiter;
-    int             x;
-    int             y;
-    int             s_l;
-    int             endian;
-    int             bpp;
-    void            *img;
-    int             *img_str;
-    void            *mlx;
-    void            *win;
+	char            *name;
+	int             tuto;
+	int             insanecolor;
+	int             ilikeit;
+	double          xminjulia;
+	double          xmaxjulia;
+	double          yminjulia;
+	double          ymaxjulia;
+	double          step;
+	int             coloriter;
+	int             fracton;
+	int             maxiter;
+	int             x;
+	int             y;
+	int             s_l;
+	int             endian;
+	int             bpp;
+	int				*bucketstr;
+	void			*bucket;
+	void            *img;
+	int             *img_str;
+	void            *mlx;
+	void            *win;
+	int             iter;
+	int             display;
+	int				wing;
 }                   t_env;
 
-void                wavy(t_env *env);
+int					fractalbucket(t_env *env);
+void	        	printnames(t_env *env);
+void                commandcenter(t_env *env);
+void                printmenu(t_env *env);
+void                fractalselect(t_env *env);
+void                chickenbrot(t_env *env);
 void                dragon(t_env *env);
 void                cursor(t_env * env);
 void                julia(t_env *env);
 void                flower(t_env *env);
 void                ramhead(t_env *env);
 void                disone(t_env *env);
-void                mandelcruz(t_env *env);
+void                mandeland(t_env *env);
 void                batmandel(t_env *env);
 void                mandelbro(t_env *env);
 void                pixelwalk(t_env *env);
-void                fill_pxl(t_env *env);
 void                setup(t_env *env);
 int                 key_manager(int key, t_env *env);
+int                 mouse_manager(int button, t_env *env);
 
 #endif

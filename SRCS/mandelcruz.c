@@ -6,13 +6,13 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 09:19:24 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/15 10:01:20 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/16 03:17:43 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-void	mandelcruz(t_env *env)
+void	mandeland(t_env *env)
 {
 	double		c_r;
 	double		c_i;

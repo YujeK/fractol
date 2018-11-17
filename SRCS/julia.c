@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 21:05:22 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/16 06:47:20 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/17 03:55:53 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	julia(t_env *env)
 			z_i = env->yminjulia + env->y * env->step;
 			z_rs = z_r * z_r;
 			z_is = z_i * z_i;
-			c_i = 0.01;
-			c_r = 0.285;
+			c_i = (0.01 + env->ci);
+			c_r = (0.285 + env->cr);
 			i = 0;
 				while (z_rs + z_is < 4  && i < env->maxiter)
 				{

@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 09:15:31 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/15 10:15:47 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/17 04:22:02 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	flower(t_env *env)
 			{
 			z_r = env->xminjulia + env->x * env->step;
 			z_i = env->yminjulia + env->y * env->step;
-			c_i = 0.01;
-			c_r = 0.285;
+			c_i = (0.01 + env->ci);
+			c_r = (0.285 + env->cr);
 			i = 0;
 				while (z_r * z_r - z_i * z_i < 4  && i < env->maxiter)
 				{

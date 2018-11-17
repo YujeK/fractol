@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:03:38 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/16 10:59:55 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/17 06:07:16 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void    toolbox(int key, t_env *env)
             env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
             env->yminjulia = -0.5 * YDIM * env->step;
             env->ymaxjulia = 0.5 * YDIM * env->step;
+            env->ci = 0;
+            env->cr = 0;
         }
     if(key == 43)
         env->display = 1;
@@ -135,10 +137,30 @@ void        fractalselection(int key, t_env *env)
     }
 }
 
+void    juliatwerk(int key, t_env *env)
+{
+    if (key == 34 && env->ci > YMINBROT + 0.01)
+        env->ci -= 0.1;
+    if (key == 40 && env->ci < YMAXBROT - 0.285)
+        env->ci += 0.1;
+    if (key == 38 && env->cr > XMINBROT + 0.01)
+        env->cr -= 0.1;
+    if(key == 37 && env->cr < XMAXBROT - 0.285)
+        env->cr += 0.1;
+}
+
 int    key_manager(int key, t_env *env)
 {
+    if (key == 82)
+        env->fracton = 10;
     if (key == 45)
+    {
         env->wing = 1;
+    if (env->fdisplay == 1)
+        env->display = 0;
+    }
+
+    juliatwerk(key, env);
     translation(key, env);
     toolbox(key, env);
     zoom(key, env);

@@ -64,6 +64,9 @@ typedef struct      s_env
 	int             iter;
 	int             display;
 	int				wing;
+	int				fdisplay;
+	double				ci;
+	double				cr;
 }                   t_env;
 
 int					fractalbucket(t_env *env);

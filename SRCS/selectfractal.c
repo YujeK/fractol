@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 03:14:36 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/16 11:41:26 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/17 05:57:36 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@ void	commandcenter(t_env *env)
 {
 	mlx_clear_window(env->mlx, env->win);
 	if (env->wing == 0)
+	{
 	    mlx_put_image_to_window(env->mlx, env->win, env->bucket, 0, 0);
+		env->fdisplay = 1;
+	}
+	else if (env->fracton == 10)
+			    mlx_put_image_to_window(env->mlx, env->win, env->bucket, 0, 0);
 	else
     mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
 	printmenu(env);
 	cursor(env);
 	printnames(env);
 	mlx_hook(env->win, 2, 0, key_manager, env);
-//	mlx_mouse_hook(env->win, mouse_manager, env);
+//	mlx_hook(env->win, 4, 0, mouse_manager, env);
 	mlx_loop(env->mlx);
 }

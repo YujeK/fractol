@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 03:34:14 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/16 11:12:41 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/17 06:05:50 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void        printmenu(t_env *env)
 		mlx_string_put(env->mlx, env->win, 1000, 490, BLUE, "Color -  :   '-'  ");
 		mlx_string_put(env->mlx, env->win, 1000, 520, PURPLE, "ZOOM  +  :   '*'  ");
 		mlx_string_put(env->mlx, env->win, 1000, 550, WHITE, "ZOOM  -  :   '/'  ");
-		mlx_string_put(env->mlx, env->win, 0, 5, BLUE, "BRESS 'B' FOR INSANE COLORS");
-		mlx_string_put(env->mlx, env->win, 272, 1, YELLOW, "*");
+		mlx_string_put(env->mlx, env->win, 0, 5, BLUE, "pRESS '0' tO WiTnEsS FrAcHicken");
+		mlx_string_put(env->mlx, env->win, 310, 1, YELLOW, "*");
 		mlx_string_put(env->mlx, env->win, 860, 1180, GREY, "dont use it if you are epileptic");
 		mlx_string_put(env->mlx, env->win, 20, 1180, GREY, "you can still press 'O' if you can't handle it");
 		mlx_string_put(env->mlx, env->win, 1180, 1175, CYAN, "**");
@@ -45,11 +45,11 @@ void		printnames(t_env *env)
 	if (env->fracton == 8)
 				mlx_string_put(env->mlx, env->win, 1100, 10, PINK, "Dragon");
 	if (env->fracton == 3)
-				mlx_string_put(env->mlx, env->win, 1100, 10, PINK, "Tornadotwister69");
+				mlx_string_put(env->mlx, env->win, 1040, 10, PINK, "Tornadotwister69");
 	if (env->fracton == 2)
 				mlx_string_put(env->mlx, env->win, 1100, 10, PINK, "Ramhead");
 	if (env->fracton == 9)
-				mlx_string_put(env->mlx, env->win, 1100, 10, PINK, "Chickenbrot");
+				mlx_string_put(env->mlx, env->win, 1090, 10, PINK, "Chickenbrot");
 	if (env->fracton == 4)
 				mlx_string_put(env->mlx, env->win, 1100, 10, PINK, "Flower");
 	if (env->fracton == 5)

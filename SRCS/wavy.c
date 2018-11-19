@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 11:17:38 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/16 03:21:25 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:18:45 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	chickenbrot(t_env *env)
 				while (z_r * z_r + z_i * z_i < 1 && i < env->maxiter)
 				{
 					tmp = z_r;
-					z_r = z_r * z_r - z_i * z_i + c_r - 0.3;
-					z_i = 2.89 * z_i * tmp + c_i - 0.75;
+					z_r = z_r * z_r - z_i * z_i + c_r;
+					z_i = 2.89 * z_i * tmp + c_i;
 					i++;
 				}
 				if (env->ilikeit == 1)

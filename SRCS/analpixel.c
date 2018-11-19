@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:31:19 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/16 09:56:07 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:11:06 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,6 @@ void    pixelwalk(t_env *env)
 	&(env->bpp), &(env->s_l), &(env->endian));
     (env->bucket = mlx_new_image(env->mlx, XDIM, YDIM));
     env->bucketstr = (int*)mlx_get_data_addr(env->bucket, &(env->bpp), &(env->s_l), &(env->endian));
+    (env->rbckt = mlx_new_image(env->mlx, XDIM, YDIM));
+    env->rbckt_str = (int*)mlx_get_data_addr(env->rbckt, &(env->bpp), &(env->s_l), &(env->endian));
 }

@@ -59,6 +59,8 @@ typedef struct      s_env
 	void			*bucket;
 	void            *img;
 	int             *img_str;
+	int				*rbckt_str;
+	void			*rbckt;
 	void            *mlx;
 	void            *win;
 	int             iter;
@@ -67,8 +69,12 @@ typedef struct      s_env
 	int				fdisplay;
 	double				ci;
 	double				cr;
+	int				controlcolor;
+	int				prevx;
+	int				prevy;
 }                   t_env;
 
+int					mouse_twerk(int x, int y, t_env *env);
 int					fractalbucket(t_env *env);
 void	        	printnames(t_env *env);
 void                commandcenter(t_env *env);
@@ -87,6 +93,7 @@ void                mandelbro(t_env *env);
 void                pixelwalk(t_env *env);
 void                setup(t_env *env);
 int                 key_manager(int key, t_env *env);
-int                 mouse_manager(int button, t_env *env);
+int                 mouse_manager(int button, int x, int y, t_env *env);
+void				fractalselection(int key, t_env *env);
 
 #endif

@@ -6,31 +6,11 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:03:38 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/17 06:07:16 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/19 17:48:50 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
-
-void    zoom(int key, t_env *env)
-{
-    if (key == 75)
-    {
-        env->xmaxjulia += 100 * env->step;
-        env->xminjulia -= 100 * env->step;
-        env->ymaxjulia += 100 * env->step;
-        env->yminjulia -= 100 * env->step;
-        env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
-    }
-    if (key == 67)
-    {
-        env->xmaxjulia -= 100 * env->step;
-        env->xminjulia += 100 * env->step;
-        env->ymaxjulia -= 100 * env->step;
-        env->yminjulia += 100 * env->step;
-        env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
-    }
-}
 
 void    toolbox(int key, t_env *env)
 {
@@ -87,9 +67,9 @@ void    translation(int key, t_env *env)
 void        fractalselection(int key, t_env *env)
 {
     if (env->fracton == 0)
-        {
-            fractalselect(env);
-        }
+    {
+        fractalselect(env);
+    }
     if (key == 83 || env->fracton == 1)
     {
         julia(env);
@@ -137,18 +117,6 @@ void        fractalselection(int key, t_env *env)
     }
 }
 
-void    juliatwerk(int key, t_env *env)
-{
-    if (key == 34 && env->ci > YMINBROT + 0.01)
-        env->ci -= 0.1;
-    if (key == 40 && env->ci < YMAXBROT - 0.285)
-        env->ci += 0.1;
-    if (key == 38 && env->cr > XMINBROT + 0.01)
-        env->cr -= 0.1;
-    if(key == 37 && env->cr < XMAXBROT - 0.285)
-        env->cr += 0.1;
-}
-
 int    key_manager(int key, t_env *env)
 {
     if (key == 82)
@@ -159,11 +127,8 @@ int    key_manager(int key, t_env *env)
     if (env->fdisplay == 1)
         env->display = 0;
     }
-
-    juliatwerk(key, env);
     translation(key, env);
     toolbox(key, env);
-    zoom(key, env);
     fractalselection(key, env);
     commandcenter(env);
     return (0);

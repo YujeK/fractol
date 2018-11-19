@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 09:15:31 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/17 04:22:02 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:16:33 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	flower(t_env *env)
 				}
 				if (env->ilikeit == 1)
 				{
-					env->img_str[XDIM * env->y + env->x] = i * 999999999 / env->maxiter;
+					env->img_str[XDIM * env->y + env->x] = i * 9999999999 / env->maxiter;
 				}
 				else
 					env->img_str[XDIM * env->y + env->x] = i * 211 / env->maxiter;

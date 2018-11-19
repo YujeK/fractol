@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 18:52:29 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/16 07:43:23 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:15:47 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    setup(t_env *env)
 env->mlx = mlx_init();
 env->win = mlx_new_window(env->mlx, XDIM, YDIM, "Frac'Chicken");
     env->coloriter = 1;
-    env->maxiter = 0;
+    env->maxiter = 10;
     env->xminjulia = XMINJULIA;
     env->xmaxjulia = XMAXJULIA;
     env->fracton = 0;

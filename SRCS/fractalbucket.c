@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 08:48:06 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/17 06:47:46 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/19 13:13:30 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int    fractalbucket(t_env *env)
 	w = XDIM;
 	if (!(env->bucket = mlx_xpm_file_to_image(env->mlx, \
 			"./IMAGES/starter.xpm", &w, &h)))
+		return (0);
+	if (!(env->rbckt = mlx_xpm_file_to_image(env->mlx, \
+			"./IMAGES/rainbowbckt.XPM", &w, &h)))
 		return (0);
 	return (1);
 }

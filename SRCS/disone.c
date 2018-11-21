@@ -6,47 +6,45 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 04:20:25 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/17 04:21:29 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/21 12:53:15 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-void	disone(t_env *env)
+void	fractus(t_env *e)
 {
-	double		c_r;
-	double		c_i;
-	double		z_r;
-	double		z_i;
-	double		i;
-	double		tmp;
+	while (e->z_r * e->z_r + e->z_i * e->z_i < 4 && e->i < e->maxiter)
+	{
+		e->tmp = e->z_r;
+		e->z_r = e->z_r * e->z_r - e->z_i * e->z_i + e->c_r;
+		e->z_i = 3.3 * e->z_i * e->tmp + e->c_i;
+		e->i++;
+	}
+}
 
-	env->y = 0;
-		while (env->y < YDIM)
+void	disone(t_env *e)
+{
+	e->y = 0;
+	while (e->y < YDIM)
+	{
+		e->x = 0;
+		while (e->x < XDIM)
 		{
-			env->x = 0;
-			while (env->x < XDIM)
+			e->z_r = e->xminjulia + e->x * e->step;
+			e->z_i = e->yminjulia + e->y * e->step;
+			e->c_i = e->ci;
+			e->c_r = e->cr;
+			e->i = 0;
+			fractus(e);
+			if (e->ilikeit == 1)
 			{
-			z_r = env->xminjulia + env->x * env->step;
-			z_i = env->yminjulia + env->y * env->step;
-			c_i = (0.01 + env->ci);
-			c_r = (0.285 + env->cr);
-			i = 0;
-				while (z_r * z_r + z_i * z_i < 4  && i < env->maxiter)
-				{
-					tmp = z_r;
-					z_r = z_r * z_r - z_i * z_i + c_r;
-					z_i = 3.3 * z_i * tmp + c_i;
-					i++;
-				}
-				if (env->ilikeit == 1)
-				{
-					env->img_str[XDIM * env->y + env->x] = i * 9999999999 / env->maxiter;
-				}
-				else
-					env->img_str[XDIM * env->y + env->x] = i * 211 / env->maxiter;
-			env->x++;
+				e->img_str[XDIM * e->y + e->x] = e->i * RB / e->maxiter;
 			}
-		env->y++;
+			else
+				e->img_str[XDIM * e->y + e->x] = e->i * 211 / e->maxiter;
+			e->x++;
 		}
+		e->y++;
+	}
 }

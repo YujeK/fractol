@@ -6,7 +6,7 @@
 #    By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 18:38:17 by asamir-k          #+#    #+#              #
-#    Updated: 2018/11/16 11:25:10 by asamir-k         ###   ########.fr        #
+#    Updated: 2018/11/21 15:09:05 by asamir-k         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME= fractol
 GCC= GCC
 HEADER= INCLUDES/fractol.h
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -O2
 LIB_PATH= INCLUDES/libft/
 COMP= mlx
 MLXLIB= -L mlx -lmlx -framework Opengl -framework Appkit
@@ -43,11 +43,13 @@ all: $(NAME)
 $(OBJ): %.o: %.c $(HEADER)
 	@gcc $(FLAGS) -o $@ -c $< -I $(LIB_PATH) -I ../INCLUDES
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIB_PATH)libft.a
 	@gcc -o $(NAME) $(OBJ) -lm -L $(LIB_PATH) -lft $(MLXLIB) -I $(COMP)
 	@echo "\033[1;34;2m FRIED CHICKEN READY TO BE EATEN ~ (__)=3 ~\033[0m"
 	@echo "\033[0;31;3m                        (ALL RULE DONE)                               ~ (__)=3 ~\033[0m"
 
+$(LIB_PATH)libft.a :
+	make -C $(LIB_PATH)
 clean:
 	@rm -f $(OBJ)
 	@echo "\033[1;33;2m IVE EATEN HALF OF THE CHICKEN , ONE WORD AND WINGS ERADICATION WILL BE ORDERED \033[0m"

@@ -6,50 +6,43 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 21:43:39 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/16 08:20:50 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/21 07:43:46 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-void	mandelbro(t_env *env)
+void	feractus(t_env *e)
 {
-	double		c_r;
-	double		c_i;
-	double		z_r;
-	double		z_i;
-	double		i;
-	double		tmp;
-	double		zoom_x;
-	double		zoom_y;
-	zoom_x = 800 / (XMAXBROT - XMINBROT);
-	zoom_y = 800 / (YMAXBROT - YMINBROT);
-	env->y = 0;
-		while (env->y < YDIM)
+	while (e->z_r * e->z_r + e->z_i * e->z_i < 4 && e->i < e->maxiter)
+	{
+		e->tmp = e->z_r;
+		e->z_r = e->z_r * e->z_r - e->z_i * e->z_i + e->c_r;
+		e->z_i = 2 * e->z_i * e->tmp + e->c_i;
+		e->i++;
+	}
+}
+
+void	mandelbro(t_env *e)
+{
+	e->y = 0;
+	while (e->y < YDIM)
+	{
+		e->x = 0;
+		while (e->x < XDIM)
 		{
-			env->x = 0;
-			while (env->x < XDIM)
-			{
-			c_r = env->x / zoom_x + XMINBROT;
-			c_i = env->y / zoom_y + YMINBROT;
-			z_i = 0;
-			z_r = 0;
-			i = 0;
-				while (z_r * z_r + z_i * z_i < 4 && i < env->maxiter)
-				{
-					tmp = z_r;
-					z_r = z_r * z_r - z_i * z_i + c_r;
-					z_i = 2 * z_i * tmp + c_i;
-					i++;
-				}
-				if (env->ilikeit == 1)
-				{
-					env->img_str[XDIM * env->y + env->x] = i * 9999999999 / env->maxiter;
-				}
-				else
-					env->img_str[XDIM * env->y + env->x] = i * 211 / env->maxiter;
-			env->x++;
-			}
-		env->y++;
+			e->c_r = e->xminjulia + e->x * e->step;
+			e->c_i = e->yminjulia + e->y * e->step;
+			e->z_i = 0;
+			e->z_r = 0;
+			e->i = 0;
+			feractus(e);
+			if (e->ilikeit == 1)
+				e->img_str[XDIM * e->y + e->x] = e->i * RB / e->maxiter;
+			else
+				e->img_str[XDIM * e->y + e->x] = e->i * 211 / e->maxiter;
+			e->x++;
 		}
+		e->y++;
+	}
 }

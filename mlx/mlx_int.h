@@ -31,11 +31,11 @@ typedef struct	glsl_info_s
   GLuint	image_vshader;
   GLuint	image_fshader;
   GLuint	image_program;
-  GLint		loc_image_position;
-  GLint		loc_image_winhalfsize;
-  GLint		loc_image_texture;
-  GLint		loc_image_pos;
-  GLint		loc_image_size;
+  GLint		loenv->c_image_position;
+  GLint		loenv->c_image_winhalfsize;
+  GLint		loenv->c_image_texture;
+  GLint		loenv->c_image_pos;
+  GLint		loenv->c_image_size;
 
   GLuint	font_vshader;
   GLuint	font_fshader;

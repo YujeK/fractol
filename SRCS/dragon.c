@@ -6,47 +6,50 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 11:10:11 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/17 04:21:24 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/21 12:45:30 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-void	dragon(t_env *env)
+void	ifrac(t_env *e)
 {
-	double		c_r;
-	double		c_i;
-	double		z_r;
-	double		z_i;
-	double		i;
-	double		tmp;
+	double r2;
+	double i2;
 
-	env->y = 0;
-		while (env->y < YDIM)
+	r2 = e->z_r * e->z_r;
+	i2 = e->z_i * e->z_i;
+	while (r2 + i2 < 4 && e->i < e->maxiter)
+	{
+		e->tmp = e->z_r * 2;
+		e->z_r = r2 - i2 + e->c_r;
+		e->z_i = 2 * e->z_i * e->tmp + e->c_i;
+		r2 = e->z_r * e->z_r;
+		i2 = e->z_i * e->z_i;
+		e->i++;
+	}
+}
+
+void	dragon(t_env *e)
+{
+	e->y = 0;
+	while (e->y < YDIM)
+	{
+		e->x = 0;
+		while (e->x < XDIM)
 		{
-			env->x = 0;
-			while (env->x < XDIM)
-			{
-			z_r = env->xminjulia + env->x * env->step;
-			z_i = env->yminjulia + env->y * env->step;
-			c_i = (0.01 + env->ci);
-			c_r = (0.285 + env->cr);
-			i = 0;
-				while (z_r * z_r + z_i * z_i < 999  && i < env->maxiter)
-				{
-					tmp = z_r * 2 ;
-					z_r = z_r * z_r - z_i * z_i + c_r;
-					z_i = 2 * z_i * tmp + c_i;
-					i++;
-				}
-				if (env->ilikeit == 1)
-				{
-					env->img_str[XDIM * env->y + env->x] = i * 9999999999 / env->maxiter;
-				}
-				else
-					env->img_str[XDIM * env->y + env->x] = i * 211 / env->maxiter;
-			env->x++;
-			}
-		env->y++;
+			e->z_r = e->xminjulia + e->x * e->step;
+			e->z_i = e->yminjulia + e->y * e->step;
+			e->c_i = e->ci;
+			e->c_r = e->cr;
+			e->i = 0;
+			ifrac(e);
+			if (e->ilikeit == 1)
+				e->img_str[XDIM * e->y + e->x] = e->i * RB / e->maxiter;
+			else
+				e->img_str[XDIM * e->y + e->x] = e->i * 211 / e->maxiter;
+			e->x++;
 		}
+		e->y++;
+	}
 }

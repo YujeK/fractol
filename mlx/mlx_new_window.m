@@ -439,11 +439,11 @@ int get_mouse_button(NSEventType eventtype)
   //      printf("err? 0x%x\n", glGetError());
 
   glUseProgram(glsl.image_program);
-  glsl.loc_image_texture = glGetUniformLocation(glsl.image_program, "texture");
-  glsl.loc_image_pos = glGetUniformLocation(glsl.image_program, "imagepos");
-  glsl.loc_image_size = glGetUniformLocation(glsl.image_program, "imagesize");
-  glsl.loc_image_winhalfsize = glGetUniformLocation(glsl.image_program, "winhalfsize");
-  glsl.loc_image_position = glGetAttribLocation(glsl.image_program, "position");
+  glsl.loenv->c_image_texture = glGetUniformLocation(glsl.image_program, "texture");
+  glsl.loenv->c_image_pos = glGetUniformLocation(glsl.image_program, "imagepos");
+  glsl.loenv->c_image_size = glGetUniformLocation(glsl.image_program, "imagesize");
+  glsl.loenv->c_image_winhalfsize = glGetUniformLocation(glsl.image_program, "winhalfsize");
+  glsl.loenv->c_image_position = glGetAttribLocation(glsl.image_program, "position");
   //      printf("err? 0x%x\n", glGetError());
 
   glUseProgram(glsl.font_program);
@@ -547,11 +547,11 @@ int get_mouse_button(NSEventType eventtype)
 
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, imgctx->texture);
-  glUniform1i(glsl.loc_image_texture, 0);
+  glUniform1i(glsl.loenv->c_image_texture, 0);
 
-  glUniform2f(glsl.loc_image_winhalfsize, size_x/2, size_y/2);
-  glUniform2f(glsl.loc_image_pos, x, size_y - y);
-  glUniform2f(glsl.loc_image_size, img->width, -img->height);
+  glUniform2f(glsl.loenv->c_image_winhalfsize, size_x/2, size_y/2);
+  glUniform2f(glsl.loenv->c_image_pos, x, size_y - y);
+  glUniform2f(glsl.loenv->c_image_size, img->width, -img->height);
 
   glBindBuffer(GL_ARRAY_BUFFER, imgctx->vbuffer);
   glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(GLfloat), (void*)0);

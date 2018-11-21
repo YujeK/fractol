@@ -6,53 +6,47 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 21:05:22 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/17 03:55:53 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/21 12:12:12 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-void	julia(t_env *env)
+void	fracinit(t_env *env)
 {
-	double		c_r;
-	double		c_i;
-	double		z_r;
-	double		z_i;
-	double		i;
-	double		tmp;
-	double		z_rs;
-	double		z_is;
+	env->i = 0.0;
+	while (env->z_rs + env->z_is < 4 && env->i < env->maxiter)
+	{
+		env->tmp = env->z_r;
+		env->z_r = env->z_rs - env->z_is + env->c_r;
+		env->z_i = 2 * env->z_i * env->tmp + env->c_i;
+		env->i++;
+		env->z_rs = env->z_r * env->z_r;
+		env->z_is = env->z_i * env->z_i;
+	}
+}
 
-	env->y = 0;
-		while (env->y < YDIM)
+void	julia(t_env *e)
+{
+	e->y = 0;
+	while (e->y < YDIM)
+	{
+		e->x = 0;
+		while (e->x < XDIM)
 		{
-			env->x = 0;
-			while (env->x < XDIM)
-			{
-			z_r = env->xminjulia + env->x * env->step;
-			z_i = env->yminjulia + env->y * env->step;
-			z_rs = z_r * z_r;
-			z_is = z_i * z_i;
-			c_i = (0.01 + env->ci);
-			c_r = (0.285 + env->cr);
-			i = 0;
-				while (z_rs + z_is < 4  && i < env->maxiter)
-				{
-					tmp = z_r;
-					z_r = z_rs - z_is + c_r;
-					z_i = 2 * z_i * tmp + c_i;
-					i++;
-					z_rs = z_r * z_r;
-					z_is = z_i * z_i;
-				}
-				if (env->ilikeit == 1)
-				{
-					env->img_str[XDIM * env->y + env->x] = i * 9999999999 / env->maxiter;
-				}
-				else
-					env->img_str[XDIM * env->y + env->x] = i * 211 / env->maxiter;
-			env->x++;
-			}
-		env->y++;
+			e->z_r = e->xminjulia + e->x * e->step;
+			e->z_i = e->yminjulia + e->y * e->step;
+			e->z_rs = e->z_r * e->z_r;
+			e->z_is = e->z_i * e->z_i;
+			e->c_i = e->ci;
+			e->c_r = e->cr;
+			fracinit(e);
+			if (e->ilikeit == 1)
+				e->img_str[XDIM * e->y + e->x] = e->i * RB / e->maxiter;
+			else
+				e->img_str[XDIM * e->y + e->x] = e->i * 211 / e->maxiter;
+			e->x++;
 		}
+		e->y++;
+	}
 }

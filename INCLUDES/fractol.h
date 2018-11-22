@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 16:59:38 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/21 15:22:07 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/22 18:01:58 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef struct		s_env
 	double			tmp;
 	int				tpn;
 	int				cockblock;
+	double			mcx;
+	double			mcy;
 }					t_env;
 
 int					mouse_twerk(int x, int y, t_env *env);
@@ -117,5 +119,5 @@ void				setup(t_env *env);
 int					key_manager(int key, t_env *env);
 int					mouse_manager(int button, int x, int y, t_env *env);
 void				fractalselection(int key, t_env *env);
-
+void				badarg(char *av[1]);
 #endif

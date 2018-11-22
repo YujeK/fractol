@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 03:14:36 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/21 15:13:59 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/22 19:06:25 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	fractalselect(t_env *e)
 		batmandel(e);
 	if ((ft_strcmp(e->name, "mandeland") == 0 && e->fra == 0) || e->fra == 6)
 		mandeland(e);
+	commandcenter(e);
 }
 
 void	commandcenter(t_env *env)
@@ -46,8 +47,8 @@ void	commandcenter(t_env *env)
 		mlx_put_image_to_window(env->mlx, env->win, env->rbckt, 0, 0);
 	else
 		mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
-	printmenu(env);
 	cursor(env);
+	printmenu(env);
 	printnames(env);
 	mlx_hook(env->win, 6, 0, mouse_twerk, env);
 	mlx_hook(env->win, 4, 0, mouse_manager, env);

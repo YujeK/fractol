@@ -6,13 +6,13 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 12:02:10 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/21 15:22:15 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/22 20:38:52 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../INCLUDES/fractol.h"
 
-void	rainbowcolor(int button, int x, int y, t_env *env)
+int		rainbowcolor(int button, int x, int y, t_env *env)
 {
 	if (x > 860 && x < 905 && y > 830 && y < 870 && env->fra == 10)
 	{
@@ -27,6 +27,7 @@ void	rainbowcolor(int button, int x, int y, t_env *env)
 			system("afplay FILES/rakoonjustin.mp3 &");
 		}
 	}
+	return (1);
 }
 
 int		mouse_twerk(int x, int y, t_env *env)
@@ -36,33 +37,36 @@ int		mouse_twerk(int x, int y, t_env *env)
 		env->cr = env->xminjulia + x * env->step;
 		env->ci = env->yminjulia + y * env->step;
 		fractalselect(env);
-		commandcenter(env);
 	}
 	return (1);
 }
 
-void	scrollzoom(int button, int x, int y, t_env *env)
+int		scrollzoom(int button, int x, int y, t_env *env)
 {
+	env->mcx = (x - XDIM / 2) * env->step;
+	env->mcy = (y - YDIM / 2) * env->step;
 	if (x > 0 && y > 0)
 	{
 		if (button == 4)
 		{
-			env->xmaxjulia += 100 * env->step;
-			env->xminjulia -= 100 * env->step;
-			env->ymaxjulia += 100 * env->step;
-			env->yminjulia -= 100 * env->step;
+			env->xmaxjulia += env->mcx + (100 * env->step);
+			env->xminjulia += env->mcx - (100 * env->step);
+			env->ymaxjulia += env->mcy + (100 * env->step);
+			env->yminjulia += env->mcy - (100 * env->step);
 			env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
+			fractalselect(env);
 		}
-		if (button == 5)
+		else if (button == 5)
 		{
-			env->xmaxjulia -= 100 * env->step;
-			env->xminjulia += 100 * env->step;
-			env->ymaxjulia -= 100 * env->step;
-			env->yminjulia += 100 * env->step;
+			env->xmaxjulia += env->mcx - (100 * env->step);
+			env->xminjulia += env->mcx + (100 * env->step);
+			env->ymaxjulia += env->mcy - (100 * env->step);
+			env->yminjulia += env->mcy + (100 * env->step);
 			env->step = (env->xmaxjulia - env->xminjulia) / XDIM;
+			fractalselect(env);
 		}
 	}
-	fractalselection(1, env);
+	return (1);
 }
 
 int		mouse_manager(int button, int x, int y, t_env *env)
@@ -74,8 +78,8 @@ int		mouse_manager(int button, int x, int y, t_env *env)
 		else
 			env->cockblock = 0;
 	}
+	else
 	rainbowcolor(button, x, y, env);
 	scrollzoom(button, x, y, env);
-	commandcenter(env);
 	return (0);
 }

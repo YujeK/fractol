@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 03:34:14 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/21 15:31:03 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/22 20:55:09 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	greyprint(t_env *env)
 			GREY, "ITER +   :   '+'");
 	mlx_string_put(env->mlx, env->win, 1000, 370, \
 			GREY, "ITER -   :   '-'");
-	mlx_string_put(env->mlx, env->win, 1000, 400, \
-			GREY,  ft_itoa(env->maxiter));
+	//mlx_string_put(env->mlx, env->win, 1000, 400,
+	//		GREY, ft_itoa(env->maxiter));
 	mlx_string_put(env->mlx, env->win, 1000, 460, \
 			GREY, "Pimp Frac : mouse");
 	mlx_string_put(env->mlx, env->win, 1000, 430, \
@@ -34,8 +34,10 @@ void	greyprint(t_env *env)
 			GREY, "ZOOM   :   'scroll'");
 	mlx_string_put(env->mlx, env->win, 0, 5, \
 			GREY, "pRESS '0' tO WiTnEsS FrAcHicken");
-	mlx_string_put(env->mlx, env->win, 0, 1175, \
-			GREY, "**");
+	//mlx_string_put(env->mlx, env->win, 1000, 560,
+	//		GREY, ft_itoa(env->cr * 100));
+	//mlx_string_put(env->mlx, env->win, 1000, 590,
+	//		GREY, ft_itoa(env->ci * 100));
 }
 
 void	rainbowprint(t_env *env)
@@ -48,8 +50,8 @@ void	rainbowprint(t_env *env)
 			RED, "ITER +   :   '+'");
 	mlx_string_put(env->mlx, env->win, 1000, 370, \
 			ORANGE, "ITER -   :   '-'");
-	mlx_string_put(env->mlx, env->win, 1000, 400, \
-			YELLOW, ft_itoa(env->maxiter));
+	//mlx_string_put(env->mlx, env->win, 1000, 400,
+	//		YELLOW, ft_itoa(env->maxiter));
 	mlx_string_put(env->mlx, env->win, 1000, 460, \
 			CYAN, "Pimp Frac : mouse");
 	mlx_string_put(env->mlx, env->win, 1000, 430, \
@@ -59,11 +61,9 @@ void	rainbowprint(t_env *env)
 	mlx_string_put(env->mlx, env->win, 1000, 520, \
 			PURPLE, "ZOOM   :   'scroll'");
 	mlx_string_put(env->mlx, env->win, 0, 5, \
-			WHITE, "pRESS '0' tO WiTnEsS FrAcHicken");
+			WHITE, "'0' FOR BUCKET FRACTAL ~(__)=3");
 	mlx_string_put(env->mlx, env->win, 20, 1180, \
-			GREY, "you can still press 'O' if you can't handle it");
-	mlx_string_put(env->mlx, env->win, 0, 1175, \
-			CYAN, "**");
+			BLACK, "PRESS 'O' IF YOU CANNOT HANDLE");
 	env->controlcolor = 1;
 }
 

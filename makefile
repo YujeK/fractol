@@ -6,7 +6,7 @@
 #    By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 18:38:17 by asamir-k          #+#    #+#              #
-#    Updated: 2018/11/21 15:09:05 by asamir-k         ###   ########.fr        #
+#    Updated: 2018/11/22 21:07:00 by asamir-k         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC=SRCS/main.c 			\
 	SRCS/mlxprint.c			\
 	SRCS/selectfractal.c	\
 	SRCS/mouseinputs.c 		\
+	SRCS/badarg.c			\
 	SRCS/fractalbucket.c
 OBJ = $(SRC:.c=.o)
 

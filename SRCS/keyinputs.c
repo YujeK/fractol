@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 19:03:38 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/11/21 15:14:23 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/11/22 19:04:45 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,23 @@ void	translation(int key, t_env *env)
 {
 	if (key == 126)
 	{
-		env->ymaxjulia -= 25 * env->step;
-		env->yminjulia -= 25 * env->step;
+		env->ymaxjulia -= 15 * env->step;
+		env->yminjulia -= 15 * env->step;
 	}
 	if (key == 125)
 	{
-		env->ymaxjulia += 25 * env->step;
-		env->yminjulia += 25 * env->step;
+		env->ymaxjulia += 15 * env->step;
+		env->yminjulia += 15 * env->step;
 	}
 	if (key == 124)
 	{
-		env->xmaxjulia += 25 * env->step;
-		env->xminjulia += 25 * env->step;
+		env->xmaxjulia += 15 * env->step;
+		env->xminjulia += 15 * env->step;
 	}
 	if (key == 123)
 	{
-		env->xmaxjulia -= 25 * env->step;
-		env->xminjulia -= 25 * env->step;
+		env->xmaxjulia -= 15 * env->step;
+		env->xminjulia -= 15 * env->step;
 	}
 }
 
@@ -85,11 +85,11 @@ void	fractalselection(int key, t_env *env)
 
 int		key_manager(int key, t_env *env)
 {
-		if (key == 53)
-		{
-			system("killall afplay 2>/dev/null");
-			exit(0);
-		}
+	if (key == 53)
+	{
+		system("killall afplay 2>/dev/null");
+		exit(0);
+	}
 	if (key == 31)
 	{
 		env->ilikeit = 0;
@@ -107,6 +107,5 @@ int		key_manager(int key, t_env *env)
 	toolbox(key, env);
 	fractalselection(key, env);
 	fractalselect(env);
-	commandcenter(env);
 	return (0);
 }
